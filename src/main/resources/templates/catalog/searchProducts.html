@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/template_head::head('search')">
+
+
+</head>
+<body>
+<header th:replace="common/template_menu::header"></header>
+
+<div id="Content">
+
+    <div id="BackLink">
+        <a href="/viewMain">Return to Main Menu</a>
+    </div>
+
+    <div id="Catalog">
+
+        <table>
+            <tr>
+                <th>&nbsp;</th>
+                <th>Product ID</th>
+                <th>Name</th>
+            </tr>
+
+            <tr th:each="product:${productList}">
+                <td>
+                    <img th:src="${product.getImages()}" src="">
+                </td>
+                <td>
+
+
+                    <a th:href="@{/viewProduct(productID=${product.getProductID()})}"
+                       th:text="${product.getProductID()}">FL-DLH-02</a>
+                </td>
+                <td th:text="${product.getName()}">Persian</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</div>
+
+<footer th:replace="common/template_menu::footer"></footer>
+</body>>
+</html>

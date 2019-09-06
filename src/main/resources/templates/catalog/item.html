@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/template_head::head('item:'+${item.getItemID()})">
+
+
+</head>
+<body>
+<header th:replace="common/template_menu::header"></header>
+
+<div id="Content">
+
+    <div id="Catalog">
+    <div id="BackLink">
+        <a th:href="@{/viewProduct(productID=${product.getProductID()})}">Return to Product</a>
+    </div>
+
+    <table>
+        <tr>
+            <td>
+                <img th:src="@{${product.getImages()}}">
+                <p th:text="${product.getDescription()}"></p>
+            </td>
+        </tr>
+        <tr>
+            <td th:text="${item.getItemID()}">
+                <b> ${sessionScope.item.itemID} </b>
+            </td>
+        </tr>
+        <tr>
+            <td th:text="${item.getAttribute1()}+${item.getAttribute2()}+${item.getAttribute3()}
+                        +${item.getAttribute4()}+${item.getAttribute5()}+${product.getName()}">
+                <b><font size="4">
+                    ${sessionScope.item.attribute1}
+                </font></b>
+            </td>
+        </tr>
+        <tr>
+            <td th:text="${product.getName()}">
+                ${sessionScope.product.name}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p th:if="${item.getQuantity() <= 0}">Back ordered.</p>
+                <p th:if="${item.getQuantity() > 0}">in stock.</p>
+            </td>
+        </tr>
+        <tr>
+            <td th:text="${item.getListPrice()}">
+
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <a class="Button" th:href="@{/addItemToCart(workingItemID=${item.getItemID()})}">Add to Cart</a>
+            </td>
+        </tr>
+    </table>
+    </div>
+
+</div>
+
+<footer th:replace="common/template_menu::footer"></footer>
+</body>>
+</html>

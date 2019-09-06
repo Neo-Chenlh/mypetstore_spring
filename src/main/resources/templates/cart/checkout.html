@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/template_head::head">
+
+
+</head>
+<body>
+<header th:replace="common/template_menu::header"></header>
+
+<div id="Content">
+
+
+    <div id="BackLink">
+        <a th:href="@{/viewCart}">Return to Shopping Cart</a>
+    </div>
+
+    <div id="Catalog">
+
+        <table>
+            <tr>
+                <td>
+                    <h2>Checkout Summary</h2>
+
+                    <table>
+
+                        <tr>
+                            <td><b>Item ID</b></td>
+                            <td><b>Product ID</b></td>
+                            <td><b>Description</b></td>
+                            <td><b>In Stock?</b></td>
+                            <td><b>Quantity</b></td>
+                            <td><b>List Price</b></td>
+                            <td><b>Total Cost</b></td>
+                        </tr>
+
+                        <!-- 循环 -->
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="7">Sub Total: </td>
+                        </tr>
+                    </table>
+                <td>&nbsp;</td>
+
+            </tr>
+        </table>
+
+    </div>
+
+
+
+
+</div>
+
+<footer th:replace="common/template_menu::footer"></footer>
+</body>>
+</html>

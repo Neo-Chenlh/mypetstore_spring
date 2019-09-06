@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/template_head::head('Account')">
+
+
+</head>
+<body>
+<header th:replace="common/template_menu::header"></header>
+
+<div id="Content">
+
+    <div id="Catalog">
+    <form method="POST" action="/saveAccount">
+
+        <h3>User Information</h3>
+
+        <table>
+            <tr>
+                <td>User ID:</td>
+                <td th:if="${session.account != null}"><input type="text" name="username" th:value="${session.account.username}"/></td>
+                <td th:if="${session.account == null}"><input type="text" name="username"/></td>
+            </tr>
+            <tr>
+                <td>New password:</td>
+                <td><input type="text " name="password"/></td>
+            </tr>
+            <tr>
+                <td>Repeat password:</td>
+                <td><input type="text" name="repeatedPassword"/></td>
+            </tr>
+        </table>
+
+        <article th:replace="account/includeAccountFields::body">
+
+        </article>
+
+        <input type="submit" name="newAccount" value="Save Account Information"/>
+        <br>
+        <a href="/viewListOrders">My Orders</a>
+    </form>
+    </div>
+
+</div>
+
+<footer th:replace="common/template_menu::footer"></footer>
+</body>>
+</html>

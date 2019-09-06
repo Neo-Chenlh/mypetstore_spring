@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.csu.mypetstore_spring.persistence.ProductMapper">
+
+    <resultMap id="productMap" type="org.csu.mypetstore_spring.domain.Product">
+        <id property="productID" column="productid"/>
+        <result property="category" column="category"/>
+        <result property="name" column="name"/>
+        <result property="description" column="descn"/>
+        <result property="images" column="img"/>
+    </resultMap>
+
+    <select id="getProductListByCategory"  resultMap="productMap" parameterType="java.lang.String">
+        select productid, category, name, descn, img
+        from product
+        where category = #{categoryID}
+    </select>
+
+    <select id="getProduct"  resultMap="productMap" parameterType="java.lang.String">
+        select productid, category, name, descn, img
+        from product
+        where productid = #{productID}
+    </select>
+
+    <select id="searchProductList"  resultMap="productMap" parameterType="java.lang.String">
+        select productid, category, name, descn, img
+        from product
+        where lower (name) like '%' #{keyword} '%'
+    </select>
+
+</mapper>
